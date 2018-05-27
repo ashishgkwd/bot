@@ -1,8 +1,18 @@
 <div>
   <h2>
-    Now showing:  
+    Now showing:
   </h2>
+  <div>
+    {{movieList.length ? movieList: 'loading...'}}
+  </div>
+<hr>
+  <div>
+    <form (submit)="addNewMovie($event)">
+      <input type="text" name="movie">
+      <input type="submit" value="Add New Movie" name="submit">
+    </form>
+  </div>
   <p>
-    {{movieList}}
+    Total Time: {{dataLoadTime|json}}
   </p>
 </div>

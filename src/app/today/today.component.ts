@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-today',
@@ -7,15 +7,47 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodayComponent implements OnInit {
 
-  movieList = [
+  serverList = [
     'Avengers: Infinity Wars',
     'Deadpool 2',
     'Book Club'
   ];
-
+  i: number = 0;
+  movieList: Array<string> = [];
+  intervalId:any = null;
+  dataLoadTime = {start: new Date().toLocaleTimeString()};
+  
   constructor() { }
 
   ngOnInit() {
+    this.intervalId = setInterval(this.mockMovieListFromServer, 2000);
+  }
+
+  mockMovieListFromServer = () => {
+    if (this.i < this.serverList.length) {
+      console.log('Push at index: ', this.i);
+      /**
+       * The below line will update the movieList array
+       * but the view will not update as the initial object reference remains the same.
+       * Structural directive like *ngFor should be used in such cases.
+       * Destructing or Array functions which return new refernce can be a workaround.
+       */
+      /* this.movieList.push(this.serverList[this.i]); */
+      this.movieList = [...this.movieList, this.serverList[this.i]];
+      this.i++;
+      console.log('New MovieList: ', this.movieList);
+    } else {
+      clearInterval(this.intervalId);
+      this.dataLoadTime['end'] =  new Date().toLocaleTimeString();
+    }
+  };
+
+  addNewMovie(event) {
+    event.preventDefault();
+    const newMovie: string = event.target.movie.value;
+    console.log("New movie: ", newMovie);
+    this.movieList = [...this.movieList, newMovie];
+    event.target.movie.value = "";
   }
 
 }
