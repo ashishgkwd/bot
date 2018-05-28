@@ -42,12 +42,9 @@ export class TodayComponent implements OnInit {
     }
   };
 
-  addNewMovie(event) {
-    event.preventDefault();
-    const newMovie: string = event.target.movie.value;
-    console.log("New movie: ", newMovie);
+  addNewMovie(newMovie:string) {
+    console.log('New movie from Admin: ', newMovie);
     this.movieList = [...this.movieList, newMovie];
-    event.target.movie.value = "";
   }
 
 }

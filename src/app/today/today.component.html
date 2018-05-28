@@ -1,18 +1,20 @@
 <div>
-  <h2>
-    Now showing:
-  </h2>
-  <div>
-    {{movieList.length ? movieList: 'loading...'}}
-  </div>
-<hr>
-  <div>
-    <form (submit)="addNewMovie($event)">
-      <input type="text" name="movie">
-      <input type="submit" value="Add New Movie" name="submit">
-    </form>
+  <div class="today-container">
+
+    <div>
+      <h2>
+        Now showing:
+      </h2>
+      <app-movie-list [movieList]="movieList"></app-movie-list>
+    </div>
+
+    <div>
+      <app-admin (onNewRelease)="addNewMovie($event)"></app-admin>
+    </div>
+
   </div>
   <p>
     Total Time: {{dataLoadTime|json}}
   </p>
+
 </div>
