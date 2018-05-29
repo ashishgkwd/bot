@@ -1,3 +1,10 @@
 <div>
-  {{movieList.length ? movieList: 'loading...'}}
+  <div>
+    {{movieList.length ? movieList.toString(): 'loading...'}}
+  </div>
+  <hr>
+  <!-- Uncomment below to demo force view refresh  -->
+  <!-- <div>
+    <button (click)="refreshView()">Refresh Me</button>
+  </div> -->
 </div>

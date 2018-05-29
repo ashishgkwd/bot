@@ -13,7 +13,7 @@ export class TodayComponent implements OnInit {
     'Book Club'
   ];
   i: number = 0;
-  movieList: Array<string> = [];
+  movieList: string[] = [];
   intervalId:any = null;
   dataLoadTime = {start: new Date().toLocaleTimeString()};
   
@@ -33,7 +33,10 @@ export class TodayComponent implements OnInit {
        * Destructing or Array functions which return new refernce can be a workaround.
        */
       /* this.movieList.push(this.serverList[this.i]); */
-      this.movieList = [...this.movieList, this.serverList[this.i]];
+      /* this.movieList = [...this.movieList, this.serverList[this.i]]; */
+      
+      // ! the below will work as we are calling array.toString() function in view
+      this.movieList.push(this.serverList[this.i]);
       this.i++;
       console.log('New MovieList: ', this.movieList);
     } else {
@@ -44,7 +47,10 @@ export class TodayComponent implements OnInit {
 
   addNewMovie(newMovie:string) {
     console.log('New movie from Admin: ', newMovie);
-    this.movieList = [...this.movieList, newMovie];
+    /* this.movieList = [...this.movieList, newMovie]; */
+    
+    // ! the below will work as we are calling array.toString() function in view
+    this.movieList.push(newMovie);
   }
 
 }

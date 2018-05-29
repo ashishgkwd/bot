@@ -1,28 +1,75 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy, SimpleChanges, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
-  styleUrls: ['./movie-list.component.css']
+  styleUrls: ['./movie-list.component.css'],
+
+  // todo: uncomment the below to demo onPush change detection
+  /* changeDetection: ChangeDetectionStrategy.OnPush */
 })
-export class MovieListComponent implements OnInit {
+export class MovieListComponent implements
+OnChanges,
+OnInit,
+DoCheck,
+AfterContentInit,
+AfterContentChecked,
+AfterViewInit,
+AfterViewChecked,
+OnDestroy {
 
-  @Input() movieList:Array<string>;
+  @Input() movieList:string[];
 
-  /* private _movieList:Array<string>;
+  /* private _movieList:string[];
 
   @Input()
-  set movieList(names:Array<string>){
+  set movieList(names:string[]){
     this._movieList = names.filter(name => !name.toLowerCase().includes('dead'));
   }
 
-  get movieList():Array<string> {
+  get movieList():string[] {
     return this._movieList;
   } */
 
-  constructor() { }
+  constructor(private changeDetectorRef:ChangeDetectorRef) { }
+
+  // todo: Uncomment below to demo onPush
+  /* refreshView() {
+    console.log('trigger change detection & view refresh');
+    this.changeDetectorRef.detectChanges();
+  } */
+
+  ngOnChanges(change:SimpleChanges) {
+    console.log('ngOnChanges: ', change);
+  }
 
   ngOnInit() {
+    console.log('ngOnInit');
+  }
+
+  // ! right method to check for changes which are not managed by Angular
+  ngDoCheck() {
+    console.log('ngDoCheck: ', this.movieList);
+  }
+
+  ngAfterContentInit() {
+    console.log('afterContentInit');
+  }
+
+  ngAfterContentChecked() {
+    console.log('afterContentChecked');
+  }
+
+  ngAfterViewInit() {
+    console.log('afterViewInit');
+  }
+
+  ngAfterViewChecked() {
+    console.log('afterViewChecked');
+  }
+
+  ngOnDestroy() {
+    console.log('onDestroy');
   }
 
 }
