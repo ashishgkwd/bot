@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ElementRef, ViewChild, ContentChild } from '@angular/core';
 
 @Component({
   selector: 'app-admin',
@@ -8,17 +8,17 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class AdminComponent implements OnInit {
 
   @Output() onNewRelease:EventEmitter<string> = new EventEmitter<string>();
+  /* @ViewChild('newMovieInput') newReleaseInput:ElementRef; */
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  addNewRelease(event) {
-    event.preventDefault();
-    const newMovie: string = event.target.movie.value;
-    console.log("New movie released: ", newMovie);
-    this.onNewRelease.emit(newMovie);
-    event.target.movie.value = "";
+  /* addNewRelease(newReleaseInput:HTMLInputElement) { */
+  addNewRelease(newReleaseName:string) {
+    console.log("New movie released: ", newReleaseName);
+    this.onNewRelease.emit(newReleaseName);
+    /* newReleaseInput.nativeElement.value = ""; */
   }
 }

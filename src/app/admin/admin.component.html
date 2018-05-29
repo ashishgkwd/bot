@@ -2,8 +2,8 @@
   <h2>
     Add new releases:
   </h2>
-  <form (submit)="addNewRelease($event)">
-    <input type="text" name="movie">
-    <input type="submit" value="Add New Movie" name="submit">
-  </form>
+  <input type="text" name="movie" #newMovieInput>
+  <input type="button" value="Add New Movie" name="submit" (click)="addNewRelease(newMovieInput.value)">
+
+  <ng-content></ng-content>
 </div>
