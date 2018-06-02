@@ -1,0 +1,17 @@
+.aob-movie-tile-container {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.aob-movie-tile {
+    width: 23.33%;
+    height: 250px;
+    padding: 5px;
+    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+    color: red;
+}
+
+.aob-movie-tile-section {
+    color: #555;    
+}

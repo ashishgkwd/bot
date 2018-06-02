@@ -1,4 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Movie, DefaultMovie } from '../models';
+import { ShowTypes, Language } from '../constants';
 
 @Component({
   selector: 'app-today',
@@ -7,20 +9,23 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 })
 export class TodayComponent implements OnInit {
 
-  serverList = [
-    'Avengers: Infinity Wars',
-    'Deadpool 2',
-    'Book Club'
+  serverList:Movie[] = [
+    {title: 'Avenger: Infinity War', rating: 86, isRestricted:false, showType: ShowTypes.GOLD, language: Language.ENGLISH},
+    {title: 'Deadpool 2', rating: 92, isRestricted:true, showType: ShowTypes.VIP, language: Language.ENGLISH},
+    {title: 'Book Club', rating: 58, isRestricted:false, showType: ShowTypes.ADVANCE, language: Language.ENGLISH},
+    {title: 'Cristiano Ronaldo', rating: 89, isRestricted:false, showType: ShowTypes.ADVANCE, language: Language.ENGLISH}
   ];
+
   i: number = 0;
-  movieList: string[] = [];
+  movieList: Movie[] = [];
   intervalId:any = null;
   dataLoadTime = {start: new Date().toLocaleTimeString()};
   
   constructor() { }
 
   ngOnInit() {
-    this.intervalId = setInterval(this.mockMovieListFromServer, 2000);
+    /* this.intervalId = setInterval(this.mockMovieListFromServer, 2000); */
+    this.movieList = [...this.serverList];
   }
 
   mockMovieListFromServer = () => {
@@ -45,10 +50,10 @@ export class TodayComponent implements OnInit {
     }
   };
 
-  addNewMovie(newMovie:string) {
-    console.log('New movie from Admin: ', newMovie);
-    /* this.movieList = [...this.movieList, newMovie]; */
-    
+  addNewMovie(title:string) {
+    console.log('New movie from Admin: ', title);
+    const newMovie:Movie =  {...DefaultMovie, ...{title}};
+
     // ! the below will work as we are calling array.toString() function in view
     this.movieList.push(newMovie);
   }

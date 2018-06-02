@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy, SimpleChanges, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Movie } from '../../models';
 
 @Component({
   selector: 'app-movie-list',
@@ -18,8 +19,9 @@ AfterViewInit,
 AfterViewChecked,
 OnDestroy {
 
-  @Input() movieList:string[];
-
+  private logLifeCycle:boolean = false; //flag to toggle life cycle methods logging
+  @Input() movieList:Movie[];
+  
   /* private _movieList:string[];
 
   @Input()
@@ -40,36 +42,36 @@ OnDestroy {
   } */
 
   ngOnChanges(change:SimpleChanges) {
-    console.log('ngOnChanges: ', change);
+    (this.logLifeCycle && console.log('ngOnChanges: ', change));
   }
 
   ngOnInit() {
-    console.log('ngOnInit');
+    (this.logLifeCycle && console.log('ngOnInit'));
   }
 
   // ! right method to check for changes which are not managed by Angular
   ngDoCheck() {
-    console.log('ngDoCheck: ', this.movieList);
+    (this.logLifeCycle && console.log('ngDoCheck: ', this.movieList));
   }
 
   ngAfterContentInit() {
-    console.log('afterContentInit');
+    (this.logLifeCycle && console.log('afterContentInit'));
   }
 
   ngAfterContentChecked() {
-    console.log('afterContentChecked');
+    (this.logLifeCycle && console.log('afterContentChecked'));
   }
 
   ngAfterViewInit() {
-    console.log('afterViewInit');
+    (this.logLifeCycle && console.log('afterViewInit'));
   }
 
   ngAfterViewChecked() {
-    console.log('afterViewChecked');
+    (this.logLifeCycle && console.log('afterViewChecked'));
   }
 
   ngOnDestroy() {
-    console.log('onDestroy');
+    (this.logLifeCycle && console.log('onDestroy'));
   }
 
 }

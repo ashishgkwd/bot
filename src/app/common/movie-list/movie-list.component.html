@@ -1,10 +1,24 @@
 <div>
-  <div>
-    {{movieList.length ? movieList.toString(): 'loading...'}}
+  <div class="aob-movie-tile-container">
+      <!-- <li *ngFor="let m of movieList">{{m|json}}</li> -->
+        <article class="aob-movie-tile" *ngFor="let m of movieList">
+          <header>
+            <h4>{{m.title}}</h4>
+          </header>
+          <section class="aob-movie-tile-section">
+            <p>Rating: {{m.rating}}% </p>
+            <p>R: {{m.isRestricted}} </p>
+            <p>Show: {{m.showType}} </p>
+            <p>Language: {{m.language}} </p>
+          </section>
+        </article>      
   </div>
-  <hr>
+  
   <!-- Uncomment below to demo force view refresh  -->
   <!-- <div>
     <button (click)="refreshView()">Refresh Me</button>
   </div> -->
+
+  
+
 </div>
