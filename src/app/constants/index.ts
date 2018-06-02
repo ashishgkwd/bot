@@ -1,10 +1,10 @@
 export enum ShowTypes{
-    GOLD,
-    VIP,
-    ADVANCE
+    GOLD = "Gold",
+    VIP = "VIP",
+    ADVANCE = "Advance"
 }
 
 export enum Language {
-    ENGLISH,
-    HINDI
+    ENGLISH = "English",
+    HINDI = "Hindi"
 }

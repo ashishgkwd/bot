@@ -3,17 +3,33 @@
       <!-- <li *ngFor="let m of movieList">{{m|json}}</li> -->
         <article class="aob-movie-tile" *ngFor="let m of movieList">
           <header>
-            <h4>{{m.title}}</h4>
+            <h3>{{m.title}}</h3>
           </header>
           <section class="aob-movie-tile-section">
-            <p>Rating: {{m.rating}}% </p>
-            <p>R: {{m.isRestricted}} </p>
+            <p>Rating: {{m.rating}} % </p>
+            <p>
+              R rated: <span *ngIf="m.isRestricted; then rIcon else uaIcon"></span> 
+            </p>
             <p>Show: {{m.showType}} </p>
             <p>Language: {{m.language}} </p>
           </section>
         </article>      
   </div>
   
+  <!-- template for general rated icon -->
+  <ng-template #uaIcon>
+    <svg width="2em" height="2em" style="margin: -10px auto">
+      <use href="/assets/img/common-icons.svg#icon-ua" />
+    </svg>
+  </ng-template>
+  
+  <!-- template for R rated movie icon -->
+  <ng-template #rIcon>
+    <svg width="2em" height="2em" style="margin: -10px auto">
+      <use href="/assets/img/common-icons.svg#icon-a" />
+    </svg>
+  </ng-template>
+
   <!-- Uncomment below to demo force view refresh  -->
   <!-- <div>
     <button (click)="refreshView()">Refresh Me</button>
