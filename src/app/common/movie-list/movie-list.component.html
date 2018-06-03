@@ -1,6 +1,5 @@
 <div>
   <div class="aob-movie-tile-container">
-      <!-- <li *ngFor="let m of movieList">{{m|json}}</li> -->
         <article class="aob-movie-tile" *ngFor="let m of movieList">
           <header>
             <h3>{{m.title}}</h3>
@@ -18,16 +17,12 @@
   
   <!-- template for general rated icon -->
   <ng-template #uaIcon>
-    <svg width="2em" height="2em" style="margin: -10px auto">
-      <use href="/assets/img/common-icons.svg#icon-ua" />
-    </svg>
+    <span><i class="fa fa-user fa-lg"></i></span>
   </ng-template>
   
   <!-- template for R rated movie icon -->
   <ng-template #rIcon>
-    <svg width="2em" height="2em" style="margin: -10px auto">
-      <use href="/assets/img/common-icons.svg#icon-a" />
-    </svg>
+    <span><i class="fa fa-user-plus fa-lg"></i></span>
   </ng-template>
 
   <!-- Uncomment below to demo force view refresh  -->
