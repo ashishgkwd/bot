@@ -8,6 +8,15 @@
             <p>Rating: {{m.rating}} % </p>
             <p>
               R rated: <span *ngIf="m.isRestricted; then rIcon else uaIcon"></span> 
+              
+              <!-- Use below post creatig the appOnlyIf Directive -->
+              <!-- <span *appOnlyIf="m.isRestricted">
+                <i class="fa fa-user fa-lg"></i>
+              </span>
+              <span *appOnlyIf="!m.isRestricted">
+                <i class="fa fa-user-plus fa-lg"></i>
+              </span> -->
+
             </p>
             <p>Show: {{m.showType}} </p>
             <p>Language: {{m.language}} </p>
