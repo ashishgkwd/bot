@@ -6,6 +6,7 @@ import { TodayComponent } from './today/today.component';
 import { MovieListComponent } from './common/movie-list/movie-list.component';
 import { AdminComponent } from './admin/admin.component';
 import { OnlyIfDirective } from './common/directives/only-if.directive';
+import { FloatUpDirective } from './common/directives/float-up.directive';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { OnlyIfDirective } from './common/directives/only-if.directive';
     TodayComponent,
     MovieListComponent,
     AdminComponent,
-    OnlyIfDirective
+    OnlyIfDirective,
+    FloatUpDirective
   ],
   imports: [
     BrowserModule

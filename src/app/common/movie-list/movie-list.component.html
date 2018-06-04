@@ -1,38 +1,19 @@
 <div>
   <div class="aob-movie-tile-container">
-        <article class="aob-movie-tile" *ngFor="let m of movieList">
+        <article class="aob-movie-tile" *ngFor="let m of movieList" appFloatUp>
           <header>
             <h3>{{m.title}}</h3>
           </header>
           <section class="aob-movie-tile-section">
             <p>Rating: {{m.rating}} % </p>
             <p>
-              R rated: <span *ngIf="m.isRestricted; then rIcon else uaIcon"></span> 
-              
-              <!-- Use below post creatig the appOnlyIf Directive -->
-              <!-- <span *appOnlyIf="m.isRestricted">
-                <i class="fa fa-user fa-lg"></i>
-              </span>
-              <span *appOnlyIf="!m.isRestricted">
-                <i class="fa fa-user-plus fa-lg"></i>
-              </span> -->
-
+              R rated: <span [ngClass]="m.isRestricted ? 'fa fa-user-plus' : 'fa fa-user'"></span>
             </p>
             <p>Show: {{m.showType}} </p>
             <p>Language: {{m.language}} </p>
           </section>
         </article>      
   </div>
-  
-  <!-- template for general rated icon -->
-  <ng-template #uaIcon>
-    <span><i class="fa fa-user fa-lg"></i></span>
-  </ng-template>
-  
-  <!-- template for R rated movie icon -->
-  <ng-template #rIcon>
-    <span><i class="fa fa-user-plus fa-lg"></i></span>
-  </ng-template>
 
   <!-- Uncomment below to demo force view refresh  -->
   <!-- <div>
