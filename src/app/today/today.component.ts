@@ -20,6 +20,7 @@ export class TodayComponent implements OnInit {
   movieList: Movie[] = [];
   intervalId:any = null;
   dataLoadTime = {start: new Date().toLocaleTimeString()};
+  searchTerm:string;
   
   constructor() { }
 
@@ -56,6 +57,11 @@ export class TodayComponent implements OnInit {
 
     // ! the below will work as we are calling array.toString() function in view
     this.movieList.push(newMovie);
+  }
+
+  searchInputListener(input:string){
+    console.log('input: ', input);
+    this.searchTerm = input;
   }
 
 }

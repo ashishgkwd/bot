@@ -7,6 +7,7 @@ import { MovieListComponent } from './common/movie-list/movie-list.component';
 import { AdminComponent } from './admin/admin.component';
 import { OnlyIfDirective } from './common/directives/only-if.directive';
 import { FloatUpDirective } from './common/directives/float-up.directive';
+import { FilterPipe } from './common/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -15,10 +16,11 @@ import { FloatUpDirective } from './common/directives/float-up.directive';
     MovieListComponent,
     AdminComponent,
     OnlyIfDirective,
-    FloatUpDirective
+    FloatUpDirective,
+    FilterPipe
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

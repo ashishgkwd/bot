@@ -1,11 +1,19 @@
 <div>
   <div class="today-container">
-
+    
     <div>
+      <nav>
+        <input #searchInput
+          class="aob-now-search"
+          placeholder="Search for Movies, Events, Plays and more"
+          (keyup)="searchInputListener(searchInput.value)"
+          />
+        
+      </nav>
       <h2>
         NOW SHOWING
       </h2>
-      <app-movie-list [movieList]="movieList"></app-movie-list>
+      <app-movie-list [movieList]="movieList|filter: searchTerm"></app-movie-list>
     </div>
 
   </div>

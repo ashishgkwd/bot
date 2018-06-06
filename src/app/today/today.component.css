@@ -4,3 +4,14 @@
     align-content: center;
     justify-content: space-evenly;
 }
+
+.aob-now-search {
+    border: none;
+    outline: none;
+    font-size: 1em;
+    padding: 0 10px;
+    height: 6vh;
+    width: 100%;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+}
