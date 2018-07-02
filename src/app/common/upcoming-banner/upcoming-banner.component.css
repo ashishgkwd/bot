@@ -1,0 +1,24 @@
+.slidebox {
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    margin-top:20px;
+    padding-bottom: 20px;
+}
+
+.slide-list {
+    margin: 0;
+    list-style: none;
+    padding-bottom: 400px; /* to fill the gap in page flow due to abosloute positioned child */
+}
+
+.slide {
+    position: absolute;
+    vertical-align: middle;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    background-color: #0099ff;
+    color:white;
+}

@@ -1,7 +1,8 @@
 .aob-movie-tile-container {
     display: flex;
     align-content: center;
-    justify-content: space-between;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .aob-movie-tile {

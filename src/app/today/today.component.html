@@ -1,6 +1,8 @@
 <div>
   <div class="today-container">
     
+    <app-upcoming-banner></app-upcoming-banner>
+
     <div>
       <nav>
         <input #searchInput
@@ -8,7 +10,6 @@
           placeholder="Search for Movies, Events, Plays and more"
           (keyup)="searchInputListener(searchInput.value)"
           />
-        
       </nav>
       <h2>
         NOW SHOWING
