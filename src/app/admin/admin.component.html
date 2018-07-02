@@ -1,7 +1,40 @@
-<div>
-  <h2>
-    Add new releases:
-  </h2>
-    <input type="text" name="movie" #newMovieInput>
-    <input type="button" value="Add New Movie" name="submit" (click)="addNewRelease(newMovieInput.value)">
+<div class="admin-panel">
+  <div class="admin-form">
+    <h2>
+      Add new releases:
+    </h2>
+    <!-- <input type="text" name="movie" #newMovieInput>
+    <input type="button" value="Add New Movie" name="submit" (click)="addNewRelease(newMovieInput.value)"> -->
+    <form #newReleaseForm="ngForm" (ngSubmit)="onSubmit(newReleaseForm)">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" name="title" ngModel required #title>
+      </div>
+      <div class="form-group">
+        <label for="rating">Rating</label>
+        <input type="number" class="form-control" name="rating" ngModel>
+      </div>
+      <div class="form-group">
+        <label for="isRestricted">Restricted</label>
+        <input type="checkbox" class="form-control" name="isRestricted" ngModel>
+      </div>
+      <div class="form-group">
+        <label for="showType">Show</label>
+        <select class="form-control" name="showType" ngModel required>
+          <option *ngFor="let show of showTypes" [value]="show">{{show}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="language">Language</label>
+        <select class="form-control" name="language" ngModel required>
+          <option *ngFor="let language of languages" [value]="language">{{language}}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!newReleaseForm.form.valid">Submit</button>
+    </form>
+  </div>
+  <div class="form-dump">
+    <pre>Title: {{title.className}}</pre>
+    
+  </div>
 </div>

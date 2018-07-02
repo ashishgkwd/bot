@@ -1,0 +1,21 @@
+.admin-panel {
+  display: flex;
+  margin: 2em 0;
+  padding: 2em;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  justify-content: space-between;
+}
+
+.admin-form {
+  text-align: initial;
+  width: 50%;
+}
+
+.ng-valid[required],
+.ng-valid.required {
+  border-left: 5px solid #42a948; /* green */
+}
+
+.ng-invalid:not(form) {
+  border-left: 5px solid #a94442; /* red */
+}

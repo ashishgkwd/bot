@@ -1,4 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, ElementRef, ViewChild, ContentChild } from '@angular/core';
+import { ShowTypes, Language } from '../constants';
+import { NgForm } from '@angular/forms';
+import { DefaultMovie, Movie } from '../models';
 
 @Component({
   selector: 'app-admin',
@@ -7,12 +10,17 @@ import { Component, OnInit, Output, EventEmitter, ElementRef, ViewChild, Content
 })
 export class AdminComponent implements OnInit {
 
+  showTypes:string[];
+  languages:string[];
+
   @Output() onNewRelease:EventEmitter<string> = new EventEmitter<string>();
   /* @ViewChild('newMovieInput') newReleaseInput:ElementRef; */
 
   constructor() { }
 
   ngOnInit() {
+    this.showTypes = Object.keys(ShowTypes).map(key => ShowTypes[key]);
+    this.languages = Object.keys(Language).map(key => Language[key]);
   }
 
   /* addNewRelease(newReleaseInput:HTMLInputElement) { */
@@ -20,5 +28,11 @@ export class AdminComponent implements OnInit {
     console.log("New movie released: ", newReleaseName);
     this.onNewRelease.emit(newReleaseName);
     /* newReleaseInput.nativeElement.value = ""; */
+  }
+
+  onSubmit(newReleaseForm:NgForm) {
+    console.log(`FORM: `, newReleaseForm);
+    let x = {...DefaultMovie, ...newReleaseForm.value} as Movie;
+    console.log(`FORM: `, x);
   }
 }
