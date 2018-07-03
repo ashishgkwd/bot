@@ -1,0 +1,12 @@
+.login-panel {
+  display: flex;
+  margin: 2em 0;
+  padding: 2em;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  justify-content: space-between;
+}
+
+.login-form {
+    text-align: initial;
+    width: 50%;
+}

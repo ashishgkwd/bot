@@ -15,3 +15,11 @@ export const DefaultMovie: Movie = {
     showType: ShowTypes.ADVANCE,
     language: Language.ENGLISH
 };
+
+export class User {
+    constructor(
+        public username:string = '',
+        public email:string = '',
+        public password:string = ''
+    ){};
+}
