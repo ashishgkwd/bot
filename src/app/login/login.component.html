@@ -6,11 +6,27 @@
         <label class="center-block">Username:
           <input class="form-control" formControlName="username" >
         </label>
+        <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+          <div *ngIf="username.errors.required">
+            Username is required.
+          </div>
+          <div *ngIf="username.errors.admin">
+            Username "admin" is not permitted.
+          </div>
+        </div>
       </div>
       <div class="form-group">
         <label class="center-block">Email:
           <input class="form-control" formControlName="email" >
         </label>
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+          <div *ngIf="email.errors.required">
+            Email is required.
+          </div>
+          <div *ngIf="email.errors.email">
+            Please provide a valid email.
+          </div>
+        </div>
       </div>
       <div class="form-group">
         <label class="center-block">Password:

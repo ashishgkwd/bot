@@ -8,7 +8,16 @@
     <form #newReleaseForm="ngForm" (ngSubmit)="onSubmit(newReleaseForm)">
       <div class="form-group">
         <label for="title">Title</label>
-        <input type="text" class="form-control" name="title" ngModel required #title>
+        <input type="text" class="form-control" name="title" 
+          ngModel required minlength="2" #title="ngModel">
+        <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+          <div *ngIf="title.errors.required">
+            Title is required.
+          </div>
+          <div *ngIf="title.errors.minlength">
+            Title must be atleast 2 characters long.
+          </div>
+        </div>
       </div>
       <div class="form-group">
         <label for="rating">Rating</label>
@@ -35,6 +44,6 @@
   </div>
   <div class="form-dump">
     <pre>Title: {{title.className}}</pre>
-    
+
   </div>
 </div>
