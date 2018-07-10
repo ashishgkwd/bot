@@ -8,6 +8,7 @@ import {
 import { User } from "../models";
 import { of, Observable } from "rxjs";
 import { delay } from "rxjs/operators";
+import { UserService } from "../services/user.service";
 
 @Component({
   selector: "app-login",
@@ -17,7 +18,7 @@ import { delay } from "rxjs/operators";
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private userService:UserService) {
     this.setupLoginForm();
   }
 
@@ -73,7 +74,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     let loggedInUser = this.loginForm.value as User;
-    console.log(`USER: `, loggedInUser);
+    this.userService.setLoggedInUser(loggedInUser);
     this.resetLoginForm();
   }
 
