@@ -14,4 +14,8 @@ export class UserService {
     this.currentUser = user;
     console.log(`CURRENT USER: `, this.currentUser);
   }
+
+  getLoggedInUser():User {
+    return this.currentUser;
+  }
 }
