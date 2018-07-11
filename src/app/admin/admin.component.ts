@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, ElementRef, ViewChild, Content
 import { ShowTypes, Language } from '../constants';
 import { NgForm } from '@angular/forms';
 import { DefaultMovie, Movie } from '../models';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-admin',
@@ -16,7 +17,7 @@ export class AdminComponent implements OnInit {
   @Output() onNewRelease:EventEmitter<string> = new EventEmitter<string>();
   /* @ViewChild('newMovieInput') newReleaseInput:ElementRef; */
 
-  constructor() { }
+  constructor(private userService:UserService) { }
 
   ngOnInit() {
     this.showTypes = Object.keys(ShowTypes).map(key => ShowTypes[key]);
@@ -33,6 +34,7 @@ export class AdminComponent implements OnInit {
   onSubmit(newReleaseForm:NgForm) {
     console.log(`FORM: `, newReleaseForm);
     let x = {...DefaultMovie, ...newReleaseForm.value} as Movie;
+    x["addedBy"] = this.userService.getLoggedInUser().username;
     console.log(`FORM: `, x);
   }
 }

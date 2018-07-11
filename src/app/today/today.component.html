@@ -12,7 +12,7 @@
           />
       </nav>
       <h2>
-        NOW SHOWING
+        NOW SHOWING - {{today|date}}
       </h2>
       <app-movie-list [movieList]="movieList|filter: searchTerm"></app-movie-list>
     </div>

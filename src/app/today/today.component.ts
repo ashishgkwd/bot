@@ -1,7 +1,7 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Movie, DefaultMovie } from '../models';
-import { ShowTypes, Language } from '../constants';
 import { MovieService } from '../services/movie.service';
+import { DATE } from '../constants';
 
 @Component({
   selector: 'app-today',
@@ -13,7 +13,7 @@ export class TodayComponent implements OnInit {
   movieList: Movie[] = [];
   searchTerm:string;
   
-  constructor(private movieService:MovieService) { }
+  constructor(private movieService:MovieService, @Inject(DATE) public today) { }
 
   ngOnInit() {
     this.movieList = [...this.movieService.getMovieList()];

@@ -12,6 +12,7 @@ import { FilterPipe } from './common/pipes/filter.pipe';
 import { UpcomingBannerComponent } from './common/upcoming-banner/upcoming-banner.component';
 import { LoginComponent } from './login/login.component';
 import { AdminModule } from './admin/admin.module';
+import { DATE } from './constants';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,9 @@ import { AdminModule } from './admin/admin.module';
     ReactiveFormsModule,
     AdminModule
   ],
-  providers: [],
+  providers: [
+    {provide: DATE, useValue: new Date()}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
