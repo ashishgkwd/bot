@@ -16,11 +16,9 @@ export class TodayComponent implements OnInit {
   constructor(private movieService:MovieService, @Inject(DATE) public today) { }
 
   ngOnInit() {
-    //this.movieList = [...this.movieService.getMovieList()];
-    this.movieService.movieListResponse$.subscribe(
-      movie => this.movieList = [...this.movieList, movie],
-      err => console.log(`error receiving movie list: `, err),
-      () => console.log(`movie list response complete`)
+    this.movieService.getMovieList().subscribe(
+      movies => this.movieList = movies,
+      err => console.log(`error fetching movie list: `, err)
     )
   }
 

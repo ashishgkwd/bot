@@ -1,0 +1,54 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "title": "Avenger: Infinity War",
+      "rating": 86,
+      "isRestricted": false,
+      "showType": "Gold",
+      "language": "English"
+    },
+    {
+      "id": 2,
+      "title": "Deadpool 2",
+      "rating": 92,
+      "isRestricted": true,
+      "showType": "VIP",
+      "language": "English"
+    },
+    {
+      "id": 3,
+      "title": "Book Club",
+      "rating": 58,
+      "isRestricted": false,
+      "showType": "Advance",
+      "language": "English"
+    },
+    {
+      "id": 4,
+      "title": "Cristiano Ronaldo",
+      "rating": 89,
+      "isRestricted": false,
+      "showType": "Advance",
+      "language": "English"
+    },
+    {
+      "title": "Sanju",
+      "rating": 90,
+      "isRestricted": true,
+      "showType": "VIP",
+      "language": "Hindi",
+      "addedBy": "ashish",
+      "id": 5
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "ashish",
+      "email": "ashish@fakemail.com",
+      "password": "ashish123",
+      "role": "admin"
+    }
+  ]
+}

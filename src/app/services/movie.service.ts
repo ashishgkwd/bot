@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Movie } from '../models';
 import { ShowTypes, Language } from '../constants';
-import { from, Observable, timer, interval, of } from 'rxjs';
-import { delay, map, debounce, throttle, throttleTime, concatMap } from 'rxjs/operators';
+import { from, Observable, of } from 'rxjs';
+import { delay, concatMap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -23,11 +25,13 @@ export class MovieService {
     )
   );
 
-  
+  constructor(private httpClient:HttpClient) { }
 
-  constructor() { }
+  getMovieList():Observable<Movie[]> {
+    return this.httpClient.get<Movie[]>(environment.apiHost + 'movies');
+  }
 
-  getMovieList():Movie[] {
-    return this.movieList;
+  postNewRelease(movie:Movie):Observable<Movie> {
+    return this.httpClient.post<Movie>(environment.apiHost + 'movies', movie);
   }
 }

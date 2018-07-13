@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { TodayComponent } from './today/today.component';
@@ -13,6 +14,7 @@ import { UpcomingBannerComponent } from './common/upcoming-banner/upcoming-banne
 import { LoginComponent } from './login/login.component';
 import { AdminModule } from './admin/admin.module';
 import { DATE } from './constants';
+import { AuthInterceptor } from './interceptors/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -29,10 +31,12 @@ import { DATE } from './constants';
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    HttpClientModule,  
     AdminModule
   ],
   providers: [
-    {provide: DATE, useValue: new Date()}
+    {provide: DATE, useValue: new Date()},
+    {provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

@@ -3,6 +3,7 @@ import { ShowTypes, Language } from '../constants';
 import { NgForm } from '@angular/forms';
 import { DefaultMovie, Movie } from '../models';
 import { UserService } from '../services/user.service';
+import { MovieService } from '../services/movie.service';
 
 @Component({
   selector: 'app-admin',
@@ -17,7 +18,7 @@ export class AdminComponent implements OnInit {
   @Output() onNewRelease:EventEmitter<string> = new EventEmitter<string>();
   /* @ViewChild('newMovieInput') newReleaseInput:ElementRef; */
 
-  constructor(private userService:UserService) { }
+  constructor(private userService:UserService, private movieService:MovieService) { }
 
   ngOnInit() {
     this.showTypes = Object.keys(ShowTypes).map(key => ShowTypes[key]);
@@ -32,9 +33,11 @@ export class AdminComponent implements OnInit {
   }
 
   onSubmit(newReleaseForm:NgForm) {
-    console.log(`FORM: `, newReleaseForm);
-    let x = {...DefaultMovie, ...newReleaseForm.value} as Movie;
-    x["addedBy"] = this.userService.getLoggedInUser().username;
-    console.log(`FORM: `, x);
+    let newMovie = {...DefaultMovie, ...newReleaseForm.value} as Movie;
+    newMovie["addedBy"] = this.userService.getLoggedInUser().username;
+    this.movieService.postNewRelease(newMovie).subscribe(
+      movie => console.log('new movie posted: ', movie),
+      err => console.log(`error posting new movie: `, err)
+    )
   }
 }
