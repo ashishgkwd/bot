@@ -1,0 +1,31 @@
+<div class="comments-panel">
+  <div class="comments-form">
+    <h3>Add Comment</h3>
+    <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label class="center-block">Author:
+          <input class="form-control" formControlName="author" >
+        </label>
+        <div *ngIf="author.invalid && (author.dirty || author.touched)" class="alert alert-danger">
+            <div *ngIf="author.errors.required">
+              Author is required.
+            </div>
+            <div *ngIf="author.errors.pattern">
+              Number only names are not allowed.
+            </div>
+          </div>
+      </div>
+      <div class="form-group">
+        <label class="center-block">Comment:
+          <textarea class="form-control" formControlName="comment"></textarea>
+        </label>
+        <div *ngIf="comment.invalid && (comment.dirty || comment.touched)" class="alert alert-danger">
+            <div *ngIf="comment.errors.required">
+              Comment is required.
+            </div>
+          </div>
+      </div>
+      <button type="submit" class="btn btn-danger" [disabled]="!commentForm.valid">Add</button>
+    </form>
+  </div>
+</div>
