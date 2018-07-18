@@ -8,6 +8,13 @@ export interface Movie {
     language: Language
 };
 
+export interface Comment {
+    movieId:number,
+    author:string,
+    comment:string,
+    createdAt:Date
+}
+
 export const DefaultMovie: Movie = {
     title: 'Default Title',
     rating: 0,
@@ -18,6 +25,7 @@ export const DefaultMovie: Movie = {
 
 export class User {
     constructor(
+        public id?:number,
         public username:string = '',
         public email:string = '',
         public password:string = ''

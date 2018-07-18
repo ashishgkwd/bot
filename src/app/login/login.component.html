@@ -1,43 +1,32 @@
 <div class="login-panel">
   <div class="login-form">
     <h3>Sign in</h3>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
       <div class="form-group">
         <label class="center-block">Username:
-          <input class="form-control" formControlName="username" >
+          <input type="text" class="form-control" name="username" ngModel required>
         </label>
-        <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
-          <div *ngIf="username.errors.required">
-            Username is required.
-          </div>
-          <div *ngIf="username.errors.admin">
-            Username "admin" is not permitted.
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="center-block">Email:
-          <input class="form-control" formControlName="email" >
-        </label>
-        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
-          <div *ngIf="email.errors.required">
-            Email is required.
-          </div>
-          <div *ngIf="email.errors.email">
-            Please provide a valid email.
-          </div>
-        </div>
       </div>
       <div class="form-group">
         <label class="center-block">Password:
-          <input type="password" class="form-control" formControlName="password" >
+          <input type="password" class="form-control" name="password" ngModel required minlength="8" #password="ngModel">
         </label>
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+          <div *ngIf="password.errors.required">
+            Password is required.
+          </div>
+          <div *ngIf="password.errors.minlength">
+            Password should be minimum 8 characters.
+          </div>
+        </div>
       </div>
       <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Sign in</button>
     </form>
-  </div>
-  <div class="form-dump">
-      <p>Form value: {{ loginForm.value | json }}</p>
-      <p>Form status: {{ loginForm.status | json }}</p>
+
+    <hr>
+    <p>
+      <a routerLink="/signup">Sign Up</a> if you don't have a login yet.
+    </p>
+    
   </div>
 </div>

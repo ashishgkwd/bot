@@ -33,13 +33,6 @@
       "language": "English"
     }
   ],
-  "users": [
-    {
-      "id": 1,
-      "username": "ashish",
-      "email": "ashish@fakemail.com",
-      "password": "ashish123",
-      "role": "admin"
-    }
-  ]
+  "users": [],
+  "comments": []
 }
