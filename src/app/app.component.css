@@ -3,3 +3,33 @@
     margin: 0 auto;
     max-width: 80vw;
 }
+
+.header {
+    display: flex;
+    align-items: center;
+}
+
+nav > * {
+    margin-left: 25px;
+}
+
+.banner {
+    flex: 1;
+}
+
+.menu {
+    flex: 10;
+    text-align: left;
+}
+
+.user {
+    flex: 1;
+}
+
+.spacer {
+    padding: 50px;
+}
+
+.active {
+    color: red;
+}

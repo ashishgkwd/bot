@@ -1,12 +1,18 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="aob-main-content">
-  <nav>
-    <img width="200" height="80" alt="Angular Logo" src="/assets/img/abo-logo.png">
-    <span>
-      <span>{{currentUser?.username}}</span>
-    </span>
-  </nav>
-  <app-today></app-today>
-  <app-admin></app-admin>
-  <app-login></app-login>
+  <div class="header">
+    <a href="/" class="banner">
+      <img width="200" height="80" alt="Angular Logo" src="/assets/img/abo-logo.png">
+    </a>
+    <nav class="menu">
+      <a routerLink="home" routerLinkActive="active">Home</a>
+      <a routerLink="login" routerLinkActive="active">Sign-In</a>
+      <a routerLink="admin" routerLinkActive="active">Admin</a>
+    </nav>
+    <a href="" class="user">{{currentUser?.username}}</a>
+  </div>
+
+  <router-outlet></router-outlet>
+  
+  <div class="spacer"></div>
 </div>

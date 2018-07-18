@@ -31,15 +31,6 @@
       "isRestricted": false,
       "showType": "Advance",
       "language": "English"
-    },
-    {
-      "title": "Sanju",
-      "rating": 90,
-      "isRestricted": true,
-      "showType": "VIP",
-      "language": "Hindi",
-      "addedBy": "ashish",
-      "id": 5
     }
   ],
   "users": [
