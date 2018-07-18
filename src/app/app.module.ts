@@ -12,6 +12,7 @@ import { FloatUpDirective } from './common/directives/float-up.directive';
 import { FilterPipe } from './common/pipes/filter.pipe';
 import { UpcomingBannerComponent } from './common/upcoming-banner/upcoming-banner.component';
 import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { LoginComponent } from './login/login.component';
     FloatUpDirective,
     FilterPipe,
     UpcomingBannerComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
