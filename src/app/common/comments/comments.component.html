@@ -29,3 +29,13 @@
     </form>
   </div>
 </div>
+
+<div class="comments-panel">
+  <ul class="comments-list">
+    <li *ngFor="let comment of comments$ | async">
+      <h4>{{comment.comment}}</h4>
+      <em>By: {{comment.author}} on {{comment.commentedOn | date:'medium'}}</em>
+      <hr>
+    </li>
+  </ul>
+</div>

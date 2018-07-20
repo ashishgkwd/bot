@@ -11,3 +11,7 @@
     width: 50%;
   }
   
+  .comments-list {
+    list-style: none;
+    text-align: initial;
+  }

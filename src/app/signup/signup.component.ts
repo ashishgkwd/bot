@@ -69,7 +69,15 @@ export class SignupComponent implements OnInit {
   onSubmit() {
     let loggedInUser = this.signupForm.value as User;
     this.userService.signupUser(loggedInUser).subscribe(
-      user => (user.id) ? this.resetLoginForm() : console.log(`user registration failed`),
+      user => {
+        if (user.id) {
+          this.signupForm.disable();
+          this.resetLoginForm();
+        }
+        else {
+          console.log(`user registration failed`);
+        }
+      },
       err => console.error(`ERROR registering user: `, err)
     )
   }

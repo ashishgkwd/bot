@@ -35,6 +35,10 @@
       </div>
       <button type="submit" class="btn btn-warning" [disabled]="!signupForm.valid">Sign Up</button>
     </form>
+    <hr>
+    <p *ngIf="signupForm.disabled">
+      Sign up successful. Please continue to <a routerLink="/login">Sign In</a>.
+    </p>
   </div>
   <div class="form-dump">
       <p>Form value: {{ signupForm.value | json }}</p>
