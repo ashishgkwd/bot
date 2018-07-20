@@ -9,14 +9,14 @@ const routes:Routes = [
   {path: 'home', component: TodayComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'comment', component: CommentsComponent},
+  {path: 'home/comment/:id', component: CommentsComponent},
   {path: '', redirectTo: '/home', pathMatch:'full'},
   {path: '**', redirectTo: '/home'}
 ]
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { enableTracing: true }),
   ],
   exports: [RouterModule]
 })

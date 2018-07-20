@@ -1,6 +1,6 @@
 <div>
   <div class="aob-movie-tile-container">
-        <article class="aob-movie-tile" *ngFor="let m of movieList" appFloatUp>
+        <article class="aob-movie-tile" *ngFor="let m of movieList" appFloatUp routerLink="comment/{{m.id}}">
           <header>
             <h3>{{m.title}}</h3>
           </header>

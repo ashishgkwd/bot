@@ -1,6 +1,7 @@
 import { ShowTypes, Language } from '../constants';
 
 export interface Movie {
+    id?:number,
     title: string,
     rating: number,
     isRestricted: boolean,
@@ -12,7 +13,7 @@ export interface Comment {
     movieId:number,
     author:string,
     comment:string,
-    createdAt:Date
+    commentedOn:number
 }
 
 export const DefaultMovie: Movie = {

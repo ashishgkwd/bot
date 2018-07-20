@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 import { CommentService } from '../../services/comment.service';
 import { Observable } from '../../../../node_modules/rxjs';
 import { Comment } from '../../models';
+import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap } from '../../../../node_modules/rxjs/operators';
 
 @Component({
   selector: 'app-comments',
@@ -11,29 +13,45 @@ import { Comment } from '../../models';
 })
 export class CommentsComponent implements OnInit {
 
-  defaultMovieId:number = 1;
+  currentMovieId:number = 1;
   commentForm: FormGroup;
   comments$:Observable<Comment[]>;
 
-  constructor(private formBuilder:FormBuilder, private commentService: CommentService) { }
+  constructor(
+    private formBuilder:FormBuilder,
+    private commentService: CommentService,
+    private route:ActivatedRoute,
+    private router:Router
+  ) { }
 
   ngOnInit() {
+    this.buildCommentsForm();
+    this.fetchMovieComments();
+  }
+
+  buildCommentsForm() {
     this.commentForm = this.formBuilder.group({
       author: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]],
       comment: ['', Validators.required]
     })
-    this.fetchMovieComments();
   }
 
   fetchMovieComments(){
-    this.comments$ = this.commentService.getMovieComments(this.defaultMovieId);
+    this.comments$ = this.route.paramMap.pipe(
+      switchMap(
+        paramMap => {
+          this.currentMovieId = +paramMap.get('id');
+          return this.commentService.getMovieComments(this.currentMovieId);
+        }
+      )
+    )
   }
 
   onSubmit() {
     let newComment = {...this.commentForm.value} as Comment;
-    newComment["movieId"] = this.defaultMovieId;
-    newComment["commentedOn"] = Date.now();
-    console.log(`Comment: `, newComment);
+    newComment.movieId = this.currentMovieId;
+    newComment.commentedOn = Date.now();
+
     this.commentService.postComment(newComment).subscribe(
       comment => {
         this.commentForm.reset();
@@ -41,7 +59,10 @@ export class CommentsComponent implements OnInit {
       },
       err => console.error(`Error adding comment: `, err)
     )
-    
+  }
+
+  navigateToHome(){
+    this.router.navigate(['/home']);
   }
 
   get author(): AbstractControl {
