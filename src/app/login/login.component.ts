@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators, NgForm } from "@angular/forms";
 import { User } from "../models";
 import { UserService } from "../services/user.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-login",
@@ -10,9 +11,16 @@ import { UserService } from "../services/user.service";
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private userService:UserService) {}
+  username:string;
 
-  ngOnInit() {}
+  constructor(private userService:UserService, private route:ActivatedRoute) {}
+
+  ngOnInit() {
+    this.route.queryParamMap.subscribe(
+      map => this.username = map.get('username'),
+      err => console.error(`Error resolving username query param`)
+    )
+  }
 
   onSubmit(loginForm:NgForm){
     let user = {...loginForm.value} as User;

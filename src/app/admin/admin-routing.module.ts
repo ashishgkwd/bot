@@ -3,11 +3,14 @@ import { RouterModule, Routes } from "@angular/router";
 import { AdminComponent } from './admin.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthGuard } from '../guards/auth.guard';
 
 const routes:Routes = [
   {
     path: 'admin',
     component: AdminHomeComponent,
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     children:[
       {path: 'new', component: AdminComponent},
       {path: 'dashboard', component: DashboardComponent},

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from "@angular/forms";
 import { User } from "../models";
 import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -12,7 +13,11 @@ export class SignupComponent implements OnInit {
 
   signupForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private userService:UserService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService:UserService,
+    private router:Router
+    ) {
     this.setupLoginForm();
   }
 
@@ -73,6 +78,7 @@ export class SignupComponent implements OnInit {
         if (user.id) {
           this.signupForm.disable();
           this.resetLoginForm();
+          this.router.navigate(['/login'], {queryParams:{username:user.username}});
         }
         else {
           console.log(`user registration failed`);

@@ -1,6 +1,7 @@
 <div class="login-panel">
   <div class="login-form">
-    <h3>Sign in</h3>
+    <h3 class="alert alert-success" *ngIf="username">Hello {{username}}. Please sign in </h3>
+    <h3 *ngIf="!username">Sign in</h3>
     <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
       <div class="form-group">
         <label class="center-block">Username:
