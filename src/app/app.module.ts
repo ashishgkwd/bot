@@ -14,7 +14,7 @@ import { UpcomingBannerComponent } from "./common/upcoming-banner/upcoming-banne
 import { LoginComponent } from "./login/login.component";
 import { SignupComponent } from './signup/signup.component';
 import { CommentsComponent } from './common/comments/comments.component';
-import { AdminModule } from "./admin/admin.module";
+//import { AdminModule } from "./admin/admin.module";
 import { DATE } from "./constants";
 import { AuthInterceptor } from "./interceptors/auth-interceptor";
 import { AppRoutingModule } from "./app-routing.module";
@@ -38,7 +38,7 @@ import { AppRoutingModule } from "./app-routing.module";
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AdminModule,
+    //AdminModule,
     AppRoutingModule
   ],
   providers: [
